@@ -1,0 +1,45 @@
+@import '~/antd/dist/antd.css';
+
+.content {
+    font-family: 'Comic Neue', cursive;
+    font-size: 20px;
+    height: 100%;
+    width: calc(100% - 80px);
+    display: inline-block;
+    margin-left: 80px;
+    vertical-align: top;
+    cursor: pointer;
+    border-width: thin;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.uploadIcon {
+    font-size: 70px;
+    color: black;
+}
+
+.uploadIcon:hover {
+    font-size: 80px;
+}
+
+.ant-upload-drag-container {
+    height: 100%;
+    //padding-top: calc(50vh - 93.33px);
+}
+
+.ant-upload-drag-container:focus {
+    outline: none;
+}
+
+.uploadContent {
+    padding-top: calc(50vh - 93.33px);
+}
+
+.ant-upload {
+    height: 100%;
+}
+
+.ant-upload:focus {
+    outline: none;
+}

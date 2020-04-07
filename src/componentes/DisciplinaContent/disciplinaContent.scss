@@ -1,0 +1,20 @@
+.contentDis {
+    font-family: 'Comic Neue', cursive;
+    font-size: 20px;
+    height: 100%;
+    width: calc(100% - 80px);
+    display: inline-block;
+    margin-left: 80px;
+    vertical-align: top;
+    background-color: #ececec;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.ant-badge {
+  display: block;
+}
+
+.ant-badge-count {
+  background-color: #52c41a;
+}
