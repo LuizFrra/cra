@@ -3,6 +3,7 @@ export default class Disciplina {
     static cra = 0;
 
     constructor(disciplinaData) {
+        disciplinaData = disciplinaData.replace("REP. FALTA", "REP.FALTA");
         var disciplinaDataSplited = disciplinaData.split(" ");
         this.semestre = disciplinaDataSplited[0];
         this.situacao = disciplinaDataSplited[2];
