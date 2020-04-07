@@ -19,7 +19,7 @@ export default class DisciplinaContent extends Component {
         super(props);
         this.state = { 
             disciplinasRenders: [],
-            changeNota: 0,
+            changeNota: -1,
             changeDisciplina: ""
         };
         this.handleDisciplina = this.handleDisciplina.bind(this);
@@ -30,8 +30,10 @@ export default class DisciplinaContent extends Component {
     }
 
     handleConfirmNota = () => {
-        console.log(this.state.changeNota);
-        console.log(this.state.changeDisciplina);
+        if(this.state.changeNota !== -1) {
+            this.props.onNotaChange(this.state.changeNota, this.state.changeDisciplina);
+            this.prepareRender();
+        }
     }
 
     showModalNota(defaultNota, title) {
@@ -46,11 +48,11 @@ export default class DisciplinaContent extends Component {
     handleDisciplina(codDisciplina) {
         const disciplinas = this.props.disciplinas;
         const selDisciplina = disciplinas.find(x => x.codDisciplina === codDisciplina);
+        this.setState({ changeDisciplina: selDisciplina, changeNota: -1 });
         this.showModalNota(selDisciplina.nota, selDisciplina.disciplina);
-        this.setState({ changeDisciplina: selDisciplina });
     }
 
-    componentDidMount() {
+    prepareRender() {
         var disciplinasRenders = [];
         var count = 0;
         const craSemestre = {
@@ -76,6 +78,10 @@ export default class DisciplinaContent extends Component {
         }
 
         this.setState({ disciplinasRenders: disciplinasRenders });
+    }
+
+    componentDidMount() {
+        this.prepareRender();
     }
 
     render() {

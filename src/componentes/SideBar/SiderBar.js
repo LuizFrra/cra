@@ -19,10 +19,20 @@ export default class SiderBar extends Component {
         this.props.onPeriodo(e.target.dataset.index);
     }
 
+    handleCra = () => {
+        this.props.onCra();
+    }
+
     componentDidUpdate(nextProps) {
-        //console.log(nextProps.periodos);
         if (nextProps.periodos !== this.state.periodos) {
             var periodosRender = [];
+
+            periodosRender.push(
+                <div key={"crads"} className={"periodo"} onClick={this.handleCra}>
+                    CRA
+                </div>   
+            );
+
             for (var periodo of nextProps.periodos) {
                 periodosRender.push(
                     <div className={"periodo"} data-index={periodo} key={periodo} onClick={this.handlePeriodo}>

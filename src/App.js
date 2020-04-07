@@ -13,7 +13,7 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            semestres: [],
+            semestres: {},
             showUploadArea: true,
             periodos: [],
             showDisciplinaArea: false,
@@ -21,9 +21,22 @@ export default class App extends Component {
         };
     }
 
+    showCRA = () => {
+        const disciplinas = (Array.prototype.concat(...Object.values(this.state.semestres)));
+        Disciplina.obterCRA(disciplinas)
+        notification.info({ message: "CRA : " + Disciplina.cra.toFixed(2) });
+        console.log("ola");       
+    }
+
     handlePeriodoClick = (periodo) => {
         if(periodo !== this.state.selPeriodo)
             this.setState({ selPeriodo: periodo });
+    }
+
+    handleChangeNota = (nota, disciplina) => {
+        disciplina.nota = nota;
+        disciplina.includeCalc = true;
+        this.showCRA();
     }
 
     handlePdfUpload = (pdf) => {
@@ -62,19 +75,22 @@ export default class App extends Component {
         }
         if(!this.state.showUploadArea && this.state.showDisciplinaArea) {
             const disciplinas = this.state.semestres[this.state.selPeriodo];
-            return (<DisciplinaContent key={this.state.selPeriodo} disciplinas={disciplinas}></DisciplinaContent>);
+            return (
+            <DisciplinaContent key={this.state.selPeriodo} disciplinas={disciplinas} onNotaChange={this.handleChangeNota}>
+
+            </DisciplinaContent>);
         }
     }
 
     componentDidMount() {
-        this.handlePdfUpload(null);
+        //this.handlePdfUpload(null);
     }
 
     render() {
 
         return (
             <React.Fragment>
-                <SiderBar onPeriodo={this.handlePeriodoClick} periodos={this.state.periodos}>
+                <SiderBar onPeriodo={this.handlePeriodoClick} onCra={this.showCRA} periodos={this.state.periodos}>
                 </SiderBar>
                 {this.renderContentArea()}
             </React.Fragment>

@@ -3,9 +3,8 @@ import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
 
 export default class pdfSigaa {
     constructor(pdfEncoded) {
-        //var pdfData = atob(pdfEncoded)
-        //this.loadingTask = pdfjs.getDocument({data: pdfData});
-        this.loadingTask = pdfjs.getDocument("historico.pdf")
+        var pdfData = atob(pdfEncoded)
+        this.loadingTask = pdfjs.getDocument({data: pdfData});
     }
 
     
