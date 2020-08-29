@@ -23,3 +23,6 @@ A Direita fica o menu de seleção de cada semestre.
 
 ![Tela para mudança de notas](https://github.com/LuizFrra/cra/blob/master/public/change_score.png)
 Tela onde é possível mudar e atribuir notas, permitindo que os alunos consigam saber qual será o seu CRA antes mesmo das notas fecharem.
+
+### `Acesse a aplicação agora`
+<a href="https://fervent-volhard-569e90.netlify.app/">Acessar</a>
