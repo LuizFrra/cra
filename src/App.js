@@ -43,7 +43,7 @@ export default class App extends Component {
         this.pdf = new pdfSigaa(pdf);
         return this.pdf.getTextFromPdf().then((text) => {
             console.log(text);
-            var allMatchs = text.match(/(\d{4}\.(1|2)).([^\s]+).(APROVADO|REPROVADO|DISPENSADO|MATRICULADO|REP. FALTA).([^\s]+).([^\s]+)([^\d]+)(\d{2})/gm);
+            var allMatchs = text.match(/(\d{4}\.(1|2|4)).([^\s]+).(APROVADO|REPROVADO|DISPENSADO|MATRICULADO|REP. FALTA).([^\s]+).([^\s]+)([^\d]+)(\d{2})/gm);
 
             if (allMatchs === null) {
                 notification.error({ message: "Arquivo Inválido !" });
